@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3"></script>
+  <link rel="stylesheet" href="./assets/style/style.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css' integrity='sha512-HHsOC+h3najWR7OKiGZtfhFIEzg5VRIPde0kB0bG2QRidTQqf+sbfcxCTB16AcFB93xMjnBIKE29/MjdzXE+qw==' crossorigin='anonymous'/>
+  <title>vue-slider</title>
+</head>
+<body>
+  
+  <main id="app" class="d-flex d-center">
+
+    <div  class="main-wrapper d-flex d-center">
+
+      <div @mouseover="autoplay(true)"   class="slider-container p-rel">
+        <!-- genero il contenuto dal js -->
+
+        <div v-for="(city,index) in cities" class="slide"
+        :class="{ 'active' : index == counterImages }"
+        >
+          <div class="text-content">
+            <h2>{{city.name}}</h2>
+            <p>{{city.description}}</p>
+          </div>
+          <img class="slider-image" :src="city.picture" :alt="city.name">
+          </div>
+
+        <div class="btn-container d-flex d-bet-center ">
+          <div class="btn prev text-center" @click='changeImg(false)'>
+            <i class="fa-solid fa-chevron-left"></i>
+          </div>
+          <div class="btn next text-center" @click='changeImg(true)'>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+      </div> 
+
+        
+        <div class="thumb-container d-flex">
+          <div v-for="(city,index) in cities" :class="{ 'active' : index == counterImages }" class="thumb">
+            <img class="thumbnail-image" :src="city.picture" :alt="city.name">
+          </div>
+        </div>
+        
+    </div>
+
+    <div  class="btn-media-container d-flex ">
+            
+      <div id="back-btn" class="np-btn">
+        <i class="fa-sharp fa-solid fa-backward"></i>
+      </div>
+      <div id="stop-btn" class="np-btn">
+        <i class="fa-solid fa-stop"></i>
+      </div>
+      <div id="play-btn" class="np-btn hide">
+        <i class="fa-solid fa-play"></i>
+      </div>
+      <div id="forward-btn" class="np-btn ">
+        <i class="fa-solid fa-forward"></i>
+      </div>
+
+    </div>
+
+  </main>
+  
+  <script src="./js/script.js"></script>
+</body>
+</html>
