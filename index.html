@@ -13,9 +13,9 @@
   
   <main id="app" class="d-flex d-center">
 
-    <div  class="main-wrapper d-flex d-center">
+    <div  @mouseover="autoplay(true,true)" @mouseout="autoplay(false,true)" class="main-wrapper d-flex d-center">
 
-      <div @mouseover="autoplay(true,true)"   class="slider-container p-rel">
+      <div class="slider-container p-rel">
         <!-- genero il contenuto dal js -->
 
         <div v-for="(city,index) in cities" class="slide"
@@ -25,7 +25,7 @@
             <h2>{{city.name}}</h2>
             <p>{{city.description}}</p>
           </div>
-          <img @click="counterImages = city.index " class="slider-image" :src="city.picture" :alt="city.name">
+          <img class="slider-image" :src="city.picture" :alt="city.name">
           </div>
 
         <div class="btn-container d-flex d-bet-center ">
@@ -42,29 +42,13 @@
         
         <div class="thumb-container d-flex">
           <div v-for="(city,index) in cities" :class="{ 'active' : index == counterImages }" class="thumb">
-            <img class="thumbnail-image" :src="city.picture" :alt="city.name">
+            <img @click="counterImages  = index"  class="thumbnail-image" :src="city.picture" :alt="city.name">
           </div>
         </div>
         
     </div>
 
-    <div  class="btn-media-container d-flex ">
-            
-      <div id="back-btn" class="np-btn">
-        <i class="fa-sharp fa-solid fa-backward"></i>
-      </div>
-      <div id="stop-btn" class="np-btn">
-        <i class="fa-solid fa-stop"></i>
-      </div>
-      <div id="play-btn" class="np-btn hide">
-        <i class="fa-solid fa-play"></i>
-      </div>
-      <div id="forward-btn" class="np-btn ">
-        <i class="fa-solid fa-forward"></i>
-      </div>
-
-    </div>
-
+   
   </main>
   
   <script src="./js/script.js"></script>

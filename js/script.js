@@ -1,16 +1,6 @@
-{/* <div class="slide">
-  <div class="text-content">
-    <h2>${name}</h2>
-    <p>${description}</p>
-  </div>
-  <img class="slider-image" src="${picture}" alt="${name}">
-  </div>  */}
-
-
-
 const { createApp } = Vue;
 
-createApp({
+ createApp({
   data(){
     
     return{
@@ -47,10 +37,10 @@ createApp({
 ],
 
 counterImages: 0,
+clock: null
 
 
     }
-
 
   },
 
@@ -65,11 +55,14 @@ counterImages: 0,
     },
 
     autoplay(isPause,isNext){
-      if(!isPause){
-      setInterval(()=>{
+      if(isPause) {
+        clearInterval(this.clock);
+        return;
+      }
+
+      this.clock = setInterval(()=>{
         this.changeImg(isNext)
-      },3000)}
-      console.log(isPause);
+      }, 3000);
     },
     
   },
