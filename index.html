@@ -15,7 +15,7 @@
 
     <div  class="main-wrapper d-flex d-center">
 
-      <div @mouseover="autoplay(true)"   class="slider-container p-rel">
+      <div @mouseover="autoplay(true,true)"   class="slider-container p-rel">
         <!-- genero il contenuto dal js -->
 
         <div v-for="(city,index) in cities" class="slide"
@@ -25,7 +25,7 @@
             <h2>{{city.name}}</h2>
             <p>{{city.description}}</p>
           </div>
-          <img class="slider-image" :src="city.picture" :alt="city.name">
+          <img @click="counterImages = city.index " class="slider-image" :src="city.picture" :alt="city.name">
           </div>
 
         <div class="btn-container d-flex d-bet-center ">

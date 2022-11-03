@@ -64,10 +64,10 @@ counterImages: 0,
       if(this.counterImages < 0)this.counterImages = this.cities.length -1;
     },
 
-    autoplay(isPause){
+    autoplay(isPause,isNext){
       if(!isPause){
       setInterval(()=>{
-        this.changeImg(true)
+        this.changeImg(isNext)
       },3000)}
       console.log(isPause);
     },
@@ -79,7 +79,7 @@ counterImages: 0,
   },
 
   created(){
-    this.autoplay(false)
+    this.autoplay(false, true)
   }
 
 }).mount('#app')
